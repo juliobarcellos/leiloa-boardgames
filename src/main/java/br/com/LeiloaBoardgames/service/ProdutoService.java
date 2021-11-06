@@ -3,10 +3,12 @@ package br.com.LeiloaBoardgames.service;
 import java.util.Optional;
 
 import org.springframework.data.crossstore.ChangeSetPersister.NotFoundException;
+import org.springframework.stereotype.Service;
 
 import br.com.LeiloaBoardgames.domain.Produto;
 import br.com.LeiloaBoardgames.repository.ProdutoRepository;
 
+@Service
 public class ProdutoService {
     ProdutoRepository repository;
 

@@ -3,10 +3,12 @@ package br.com.LeiloaBoardgames.service;
 import java.util.Optional;
 
 import org.springframework.data.crossstore.ChangeSetPersister.NotFoundException;
+import org.springframework.stereotype.Service;
 
 import br.com.LeiloaBoardgames.domain.Lance;
 import br.com.LeiloaBoardgames.repository.LanceRepository;
 
+@Service
 public class LanceService {
     LanceRepository repository;
 
@@ -19,13 +21,14 @@ public class LanceService {
     }
 
     public void atualizar(Long id, Lance lance) {
-        //TODO: mapeamento para atualizar o lance
+        // TODO: mapeamento para atualizar o lance
         Optional<Lance> lanceAtual = repository.findById(id);
         if (lanceAtual.isPresent()) {
             lance = lanceAtual.get();
             repository.save(lance);
-        }  
+        }
     }
+
     public void deletar(Long id) {
         repository.deleteById(id);
     }
