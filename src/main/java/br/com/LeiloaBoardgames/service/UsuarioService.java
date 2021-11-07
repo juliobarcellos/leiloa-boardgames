@@ -8,7 +8,7 @@ import br.com.LeiloaBoardgames.domain.Usuario;
 import br.com.LeiloaBoardgames.repository.UsuarioRepository;
 
 public class UsuarioService {
-    
+
     UsuarioRepository repository;
 
     public UsuarioService(UsuarioRepository repository) {
@@ -19,19 +19,20 @@ public class UsuarioService {
         repository.save(null);
     }
 
-    public void atualizar(Long id, Usuario usuario) {
-        //TODO: mapeamento para atualizar o usuario
+    public void atualizar(Integer id, Usuario usuario) {
+        // TODO: mapeamento para atualizar o usuario
         Optional<Usuario> usuarioAtual = repository.findById(id);
         if (usuarioAtual.isPresent()) {
             usuario = usuarioAtual.get();
             repository.save(usuario);
-        }  
+        }
     }
-    public void deletar(Long id) {
+
+    public void deletar(Integer id) {
         repository.deleteById(id);
     }
 
-    public Usuario buscar(Long id) throws NotFoundException {
+    public Usuario buscar(Integer id) throws NotFoundException {
         return repository.findById(id).orElseThrow(NotFoundException::new);
     }
 }

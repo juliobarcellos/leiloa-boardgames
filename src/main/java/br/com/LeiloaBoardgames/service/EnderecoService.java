@@ -20,7 +20,7 @@ public class EnderecoService {
         repository.save(null);
     }
 
-    public void atualizar(Long id, Endereco endereco) {
+    public void atualizar(Integer id, Endereco endereco) {
         // TODO: mapeamento para atualizar o endereco
         Optional<Endereco> enderecoAtual = repository.findById(id);
         if (enderecoAtual.isPresent()) {
@@ -29,11 +29,11 @@ public class EnderecoService {
         }
     }
 
-    public void deletar(Long id) {
+    public void deletar(Integer id) {
         repository.deleteById(id);
     }
 
-    public Endereco buscar(Long id) throws NotFoundException {
+    public Endereco buscar(Integer id) throws NotFoundException {
         return repository.findById(id).orElseThrow(NotFoundException::new);
     }
 }

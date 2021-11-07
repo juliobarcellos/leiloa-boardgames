@@ -6,6 +6,6 @@ import org.springframework.stereotype.Repository;
 import br.com.LeiloaBoardgames.domain.Lance;
 
 @Repository
-public interface LanceRepository extends JpaRepository<Lance, Long> {
+public interface LanceRepository extends JpaRepository<Lance, Integer> {
 
 }

@@ -20,7 +20,7 @@ public class LanceService {
         repository.save(null);
     }
 
-    public void atualizar(Long id, Lance lance) {
+    public void atualizar(Integer id, Lance lance) {
         // TODO: mapeamento para atualizar o lance
         Optional<Lance> lanceAtual = repository.findById(id);
         if (lanceAtual.isPresent()) {
@@ -29,11 +29,11 @@ public class LanceService {
         }
     }
 
-    public void deletar(Long id) {
+    public void deletar(Integer id) {
         repository.deleteById(id);
     }
 
-    public Lance buscar(Long id) throws NotFoundException {
+    public Lance buscar(Integer id) throws NotFoundException {
         return repository.findById(id).orElseThrow(NotFoundException::new);
     }
 }

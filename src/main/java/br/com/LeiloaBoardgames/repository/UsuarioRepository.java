@@ -6,6 +6,6 @@ import org.springframework.stereotype.Repository;
 import br.com.LeiloaBoardgames.domain.Usuario;
 
 @Repository
-public interface UsuarioRepository extends JpaRepository<Usuario, Long> {
+public interface UsuarioRepository extends JpaRepository<Usuario, Integer> {
 
 }

@@ -6,6 +6,6 @@ import org.springframework.stereotype.Repository;
 import br.com.LeiloaBoardgames.domain.Perguntas;
 
 @Repository
-public interface PerguntasRepository extends JpaRepository<Perguntas, Long> {
+public interface PerguntasRepository extends JpaRepository<Perguntas, Integer> {
 
 }

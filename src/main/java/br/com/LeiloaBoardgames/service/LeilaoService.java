@@ -20,7 +20,7 @@ public class LeilaoService {
         repository.save(null);
     }
 
-    public void atualizar(Long id, Leilao leilao) {
+    public void atualizar(Integer id, Leilao leilao) {
         // TODO: mapeamento para atualizar o leilao
         Optional<Leilao> leilaoAtual = repository.findById(id);
         if (leilaoAtual.isPresent()) {
@@ -29,11 +29,11 @@ public class LeilaoService {
         }
     }
 
-    public void deletar(Long id) {
+    public void deletar(Integer id) {
         repository.deleteById(id);
     }
 
-    public Leilao buscar(Long id) throws NotFoundException {
+    public Leilao buscar(Integer id) throws NotFoundException {
         return repository.findById(id).orElseThrow(NotFoundException::new);
     }
 }

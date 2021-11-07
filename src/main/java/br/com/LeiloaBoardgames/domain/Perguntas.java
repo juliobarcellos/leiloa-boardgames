@@ -18,9 +18,9 @@ import lombok.Setter;
 public class Perguntas {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-    private Long idUsuario;
-    private Long idLeilao;
+    private Integer id;
+    private Integer idUsuario;
+    private Integer idLeilao;
     private String pergunta;
     private String resposta;
     private LocalDateTime dataPergunta;

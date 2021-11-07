@@ -18,15 +18,15 @@ import lombok.Setter;
 public class Leilao {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-    private Long idProduto;
+    private Integer id;
+    private Integer idProduto;
     private String detalheDoItem;
     private LocalDateTime dataInicio;
     private LocalDateTime dataFim;
     private Double ValorInicial;
-    private Long IdlanceAtual;
-    private Long IdlanceVencedor;
-    private Long IdVendedor;
+    private Integer IdlanceAtual;
+    private Integer IdlanceVencedor;
+    private Integer IdVendedor;
     private String lances;
     private Double Altura;
     private Double Largura;

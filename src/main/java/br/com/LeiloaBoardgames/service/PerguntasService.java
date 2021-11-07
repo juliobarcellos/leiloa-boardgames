@@ -20,7 +20,7 @@ public class PerguntasService {
         repository.save(null);
     }
 
-    public void atualizar(Long id, Perguntas perguntas) {
+    public void atualizar(Integer id, Perguntas perguntas) {
         // TODO: mapeamento para atualizar o perguntas
         Optional<Perguntas> perguntasAtual = repository.findById(id);
         if (perguntasAtual.isPresent()) {
@@ -29,11 +29,11 @@ public class PerguntasService {
         }
     }
 
-    public void deletar(Long id) {
+    public void deletar(Integer id) {
         repository.deleteById(id);
     }
 
-    public Perguntas buscar(Long id) throws NotFoundException {
+    public Perguntas buscar(Integer id) throws NotFoundException {
         return repository.findById(id).orElseThrow(NotFoundException::new);
     }
 }

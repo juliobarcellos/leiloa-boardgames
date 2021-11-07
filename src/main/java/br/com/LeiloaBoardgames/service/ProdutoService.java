@@ -20,19 +20,20 @@ public class ProdutoService {
         repository.save(null);
     }
 
-    public void atualizar(Long id, Produto produto) {
-        //TODO: mapeamento para atualizar o produto
+    public void atualizar(Integer id, Produto produto) {
+        // TODO: mapeamento para atualizar o produto
         Optional<Produto> produtoAtual = repository.findById(id);
         if (produtoAtual.isPresent()) {
             produto = produtoAtual.get();
             repository.save(produto);
-        }  
+        }
     }
-    public void deletar(Long id) {
+
+    public void deletar(Integer id) {
         repository.deleteById(id);
     }
 
-    public Produto buscar(Long id) throws NotFoundException {
+    public Produto buscar(Integer id) throws NotFoundException {
         return repository.findById(id).orElseThrow(NotFoundException::new);
     }
 }
