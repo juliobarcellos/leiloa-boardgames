@@ -7,13 +7,13 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
-import lombok.Builder;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 @Getter
 @Setter
 @Builder
+@AllArgsConstructor
+@NoArgsConstructor
 @Entity
 public class Usuario {
     @Id
@@ -22,7 +22,7 @@ public class Usuario {
 
     private String nome;
 
-    private String usuário;
+    private String usuario;
 
     private String email;
 
