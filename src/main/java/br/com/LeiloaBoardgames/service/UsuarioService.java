@@ -7,8 +7,10 @@ import org.springframework.data.crossstore.ChangeSetPersister.NotFoundException;
 import br.com.LeiloaBoardgames.domain.Usuario;
 import br.com.LeiloaBoardgames.repository.UsuarioRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Service;
 
 @RequiredArgsConstructor
+@Service
 public class UsuarioService {
 
     private final UsuarioRepository repository;
