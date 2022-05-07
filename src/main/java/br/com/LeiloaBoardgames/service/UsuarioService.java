@@ -2,10 +2,9 @@ package br.com.LeiloaBoardgames.service;
 
 import java.util.Optional;
 
-import org.springframework.data.crossstore.ChangeSetPersister.NotFoundException;
-
 import br.com.LeiloaBoardgames.domain.Usuario;
 import br.com.LeiloaBoardgames.repository.UsuarioRepository;
+import javassist.NotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -23,20 +22,22 @@ public class UsuarioService {
         return repository.findById(id);
     }
 
-    public void atualizar(Integer id, Usuario usuario) {
+    public void atualizar(Integer id, Usuario usuario) throws NotFoundException {
+        Usuario usuarioExistente = buscar(id);
         // TODO: mapeamento para atualizar o usuario
-        Optional<Usuario> usuarioAtual = repository.findById(id);
-        if (usuarioAtual.isPresent()) {
-            usuario = usuarioAtual.get();
-            repository.save(usuario);
-        }
+        usuarioExistente.setNome(usuario.getNome());
+        usuarioExistente.setEmail(usuario.getEmail());
+        usuarioExistente.setSenha(usuario.getSenha());
+
+        repository.save(usuarioExistente);
     }
 
-    public void deletar(Integer id) {
-        repository.deleteById(id);
+    public void deletar(Integer id) throws NotFoundException {
+        Usuario usuarioExistente = buscar(id);
+        repository.delete(usuarioExistente);
     }
 
     public Usuario buscar(Integer id) throws NotFoundException {
-        return repository.findById(id).orElseThrow(NotFoundException::new);
+        return repository.findById(id).orElseThrow(() -> new NotFoundException("Usuário não encontrado"));
     }
 }
