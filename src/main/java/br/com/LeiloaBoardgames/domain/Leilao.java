@@ -1,7 +1,7 @@
 package br.com.LeiloaBoardgames.domain;
 
 import java.time.LocalDateTime;
-import java.util.List;
+import java.util.HashSet;
 import java.util.Set;
 
 import javax.persistence.Entity;
@@ -14,22 +14,21 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.OrderBy;
 
-import lombok.Builder;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
-@Getter
-@Setter
+@Data
 @Builder
+@NoArgsConstructor
+@AllArgsConstructor
 @Entity
 public class Leilao {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    private Integer idLeilao;
 
     @ManyToOne
-    @JoinColumn(name = "id_produto")
-    private Produto produto;
+    @JoinColumn(name = "idJogo")
+    private Jogo jogo;
 
     private String detalheDoItem;
 
@@ -39,22 +38,17 @@ public class Leilao {
 
     private Double ValorInicial;
 
-    //TODO: Verificar se é necessário ou não o lance atual e o lance vencedor
-    //da pra usar apenas a lista de lances e pegar o ultimo lance para os dois casos;
-    @OneToOne(mappedBy = "leilao")
-    private Lance lanceAtual;
+    private Long lanceAtual;
 
-    @OneToOne(mappedBy = "leilao")
-    private Lance lanceVencedor;
+    private Long lanceVencedor;
 
     @ManyToOne
-    @JoinColumn(name = "id_usuario")
-
+    @JoinColumn(name = "idVendedor")
     private Usuario vendedor;
 
     @OneToMany(mappedBy = "leilao")
-    @OrderBy("dataHora DESC")
-    private Set<Lance> lances;
+    @OrderBy("datahora desc")
+    private Set<Lance> lances = new HashSet<>();
 
     private Double Altura;
 
