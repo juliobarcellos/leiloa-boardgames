@@ -4,12 +4,7 @@ import lombok.*;
 
 import java.time.LocalDate;
 
-<<<<<<< HEAD
 @Data
-=======
-@Getter
-@Setter
->>>>>>> e7e4d7d (refact - merge master)
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor

@@ -1,49 +1,55 @@
 package br.com.LeiloaBoardgames.service;
 
-import java.util.Optional;
-
 import br.com.LeiloaBoardgames.domain.Usuario;
+import br.com.LeiloaBoardgames.exceptions.BusinessException;
 import br.com.LeiloaBoardgames.repository.UsuarioRepository;
-<<<<<<< HEAD
 import javassist.NotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 @RequiredArgsConstructor
 @Service
-=======
-import lombok.RequiredArgsConstructor;
-
-@RequiredArgsConstructor
->>>>>>> e7e4d7d (refact - merge master)
 public class UsuarioService {
 
     private final UsuarioRepository repository;
 
     public Usuario save(Usuario usuario) {
+        validarUsuarioExistente(usuario);
         return repository.save(usuario);
     }
 
-    public Optional<Usuario> buscarPorId(Integer id) {
-        return repository.findById(id);
+
+    public Usuario atualizar(Integer id, Usuario usuario) throws NotFoundException {
+        Usuario usuarioAtual = buscarPorId(id);
+
+        validarUsuarioExistente(usuario);
+
+        usuarioAtual.setNome(usuario.getNome());
+        usuarioAtual.setEmail(usuario.getEmail());
+        usuarioAtual.setSenha(usuario.getSenha());
+        return repository.save(usuarioAtual);
     }
 
-    public void atualizar(Integer id, Usuario usuario) throws NotFoundException {
-        Usuario usuarioExistente = buscar(id);
-        // TODO: mapeamento para atualizar o usuario
-        usuarioExistente.setNome(usuario.getNome());
-        usuarioExistente.setEmail(usuario.getEmail());
-        usuarioExistente.setSenha(usuario.getSenha());
 
-        repository.save(usuarioExistente);
-    }
 
     public void deletar(Integer id) throws NotFoundException {
-        Usuario usuarioExistente = buscar(id);
+        Usuario usuarioExistente = buscarPorId(id);
         repository.delete(usuarioExistente);
     }
 
-    public Usuario buscar(Integer id) throws NotFoundException {
+    public Usuario buscarPorId(Integer id) throws NotFoundException {
         return repository.findById(id).orElseThrow(() -> new NotFoundException("Usuário não encontrado"));
+    }
+
+    private void validarUsuarioExistente(Usuario usuario) {
+        if (repository.existsByEmail(usuario.getEmail())) {
+            throw new BusinessException("Email já cadastrado");
+        }
+        if (repository.existsByCpf(usuario.getCpf())) {
+            throw new BusinessException("CPF já cadastrado");
+        }
+        if (repository.existsByUsuario(usuario.getUsuario())) {
+            throw new BusinessException("Usuário já cadastrado");
+        }
     }
 }
