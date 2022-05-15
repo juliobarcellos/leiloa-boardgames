@@ -9,13 +9,12 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
-import lombok.Builder;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
-@Getter
-@Setter
+@Data
 @Builder
+@NoArgsConstructor
+@AllArgsConstructor
 @Entity
 public class Perguntas {
     @Id
@@ -25,7 +24,7 @@ public class Perguntas {
     private Integer idUsuario;
 
     @ManyToOne
-    @JoinColumn(name = "id_leilao")
+    @JoinColumn(name = "idLeilao")
     private Leilao leilao;
 
     private String pergunta;
