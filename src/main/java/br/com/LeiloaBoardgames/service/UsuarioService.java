@@ -4,12 +4,18 @@ import java.util.Optional;
 
 import br.com.LeiloaBoardgames.domain.Usuario;
 import br.com.LeiloaBoardgames.repository.UsuarioRepository;
+<<<<<<< HEAD
 import javassist.NotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 @RequiredArgsConstructor
 @Service
+=======
+import lombok.RequiredArgsConstructor;
+
+@RequiredArgsConstructor
+>>>>>>> e7e4d7d (refact - merge master)
 public class UsuarioService {
 
     private final UsuarioRepository repository;
