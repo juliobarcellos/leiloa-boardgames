@@ -16,12 +16,14 @@ import lombok.*;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-public class Perguntas {
+public class Pergunta {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    private Integer idUsuario;
+    @ManyToOne
+    @JoinColumn(name = "idUsuario")
+    private Usuario usuario;
 
     @ManyToOne
     @JoinColumn(name = "idLeilao")
@@ -31,5 +33,5 @@ public class Perguntas {
 
     private String resposta;
 
-    private LocalDateTime dataPergunta;
+    private LocalDateTime dataPergunta = LocalDateTime.now();
 }

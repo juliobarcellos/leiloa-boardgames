@@ -7,18 +7,19 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
-import lombok.Builder;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
-@Getter
-@Setter
+@Data
 @Builder
+@NoArgsConstructor
+@AllArgsConstructor
 @Entity
 public class Endereco {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    private Integer idEndereco;
+
+    private String identificacao;
     
     private String destinatario;
     
@@ -34,11 +35,11 @@ public class Endereco {
     
     private String cidade;
     
-    private String estado;
+    private EstadoEnum estado;
     
     private Boolean preferencial;
-    
+
     @ManyToOne
-    @JoinColumn(name = "id_usuario")
+    @JoinColumn(name = "idUsuario")
     private Usuario usuario;
 }

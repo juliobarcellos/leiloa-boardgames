@@ -9,28 +9,27 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
-import lombok.Builder;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
-@Getter
-@Setter
+@Data
 @Builder
+@NoArgsConstructor
+@AllArgsConstructor
 @Entity
 public class Lance {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    private Integer idLance;
 
     @ManyToOne
-    @JoinColumn(name = "id_usuario")
+    @JoinColumn(name = "idUsuario")
     private Usuario usuario;
     
     @ManyToOne
-    @JoinColumn(name = "id_leilao")
+    @JoinColumn(name = "idLeilao")
     private Leilao leilao;
 
     private Double valor;
 
-    private LocalDateTime datahora;
+    private LocalDateTime datahora = LocalDateTime.now();
 }
