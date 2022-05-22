@@ -23,9 +23,7 @@ public class UsuarioAtualizarRequest {
 
     private String email;
 
-    private String senha;
-
-    private LocalDate dataNascimento;
+    private String dataNascimento;
 
     private String telefone;
 }
