@@ -42,6 +42,8 @@ public class Usuario {
 
     private LocalDate dataEmissao;
 
+    private Boolean ativo = true;
+
     @OneToMany
     private List<Jogo> jogosFavoritos = new ArrayList<>();
 

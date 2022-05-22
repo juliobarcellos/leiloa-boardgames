@@ -2,27 +2,15 @@ package br.com.LeiloaBoardgames.domain.response;
 
 import lombok.*;
 
-import java.time.LocalDate;
-
 @Data
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class UsuarioResponse {
-
-    private Integer id;
+public class UsuarioCreateResponse {
 
     private String nome;
 
     private String usuario;
 
     private String email;
-
-    private String senha;
-
-    private String cpf;
-
-    private LocalDate dataNascimento;
-
-    private String telefone;
 }
