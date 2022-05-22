@@ -39,9 +39,9 @@ public class UsuarioController {
     @PutMapping("/usuarios/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void update(@PathVariable("id") Integer id, @Valid @RequestBody UsuarioAtualizarRequest request) {
-        Usuario entity = mapper.toEntity(request);
-        service.atualizar(id, entity);
+        service.atualizar(id, request);
     }
+
 
     @GetMapping("/usuarios/{id}")
     @ResponseStatus(HttpStatus.OK)

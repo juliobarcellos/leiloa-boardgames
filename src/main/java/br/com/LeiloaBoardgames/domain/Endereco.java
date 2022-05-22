@@ -16,7 +16,7 @@ import lombok.*;
 @Entity
 public class Endereco {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer idEndereco;
 
     private String identificacao;

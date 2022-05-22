@@ -9,10 +9,10 @@ import br.com.LeiloaBoardgames.domain.Jogo;
 import br.com.LeiloaBoardgames.repository.ProdutoRepository;
 
 @Service
-public class ProdutoService {
+public class JogoService {
     ProdutoRepository repository;
 
-    public ProdutoService(ProdutoRepository repository) {
+    public JogoService(ProdutoRepository repository) {
         this.repository = repository;
     }
 

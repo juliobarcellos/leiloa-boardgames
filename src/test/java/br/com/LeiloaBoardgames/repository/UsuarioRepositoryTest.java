@@ -26,7 +26,7 @@ public class UsuarioRepositoryTest {
     @Test
     @DisplayName("Deve salvar um usuario")
     public void deveSalvarUsuario() {
-        Usuario usuario = DataBuilder.getUsuarioMock();
+        Usuario usuario = DataBuilder.getUsuarioAtivoMock();
         usuario.setIdUsuario(null);
         usuarioRepository.save(usuario);
         assertThat(usuario.getIdUsuario()).isNotNull();

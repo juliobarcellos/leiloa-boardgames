@@ -18,7 +18,7 @@ import lombok.*;
 @Entity
 public class Pergunta {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
 
     @ManyToOne

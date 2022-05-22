@@ -14,7 +14,7 @@ import javax.persistence.*;
 @Entity
 public class Avaliacao {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long idAvaliacao;
 
     private Long idLeilao;
