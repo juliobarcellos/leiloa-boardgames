@@ -59,7 +59,7 @@ public class UsuarioControllerTest {
 
         UsuarioCreateRequest usuarioCreateRequest = DataBuilder.getUsuarioRequestMock();
         UsuarioCreateResponse response = DataBuilder.getUsuarioCreateResponseMock();
-        Usuario usuarioSalvo = DataBuilder.getUsuarioMock();
+        Usuario usuarioSalvo = DataBuilder.getUsuarioAtivoMock();
 
         String json = new ObjectMapper().findAndRegisterModules().writeValueAsString(usuarioCreateRequest);
 
@@ -101,7 +101,7 @@ public class UsuarioControllerTest {
     public void createUserWithCpfAlreadyExists() throws Exception {
 
         UsuarioCreateRequest usuarioCreateRequest = DataBuilder.getUsuarioRequestMock();
-        Usuario usuarioSalvo = DataBuilder.getUsuarioMock();
+        Usuario usuarioSalvo = DataBuilder.getUsuarioAtivoMock();
 
         String json = new ObjectMapper().findAndRegisterModules().writeValueAsString(usuarioCreateRequest);
         when(mapper.toEntity(any(UsuarioCreateRequest.class))).thenReturn(usuarioSalvo);
@@ -124,7 +124,7 @@ public class UsuarioControllerTest {
     public void createUserWithEmailAlreadyExists() throws Exception {
 
         UsuarioCreateRequest usuarioCreateRequest = DataBuilder.getUsuarioRequestMock();
-        Usuario usuarioSalvo = DataBuilder.getUsuarioMock();
+        Usuario usuarioSalvo = DataBuilder.getUsuarioAtivoMock();
 
         String json = new ObjectMapper().findAndRegisterModules().writeValueAsString(usuarioCreateRequest);
         when(mapper.toEntity(any(UsuarioCreateRequest.class))).thenReturn(usuarioSalvo);
@@ -147,7 +147,7 @@ public class UsuarioControllerTest {
     public void createUserWithUserAlreadyExists() throws Exception {
 
         UsuarioCreateRequest usuarioCreateRequest = DataBuilder.getUsuarioRequestMock();
-        Usuario usuarioSalvo = DataBuilder.getUsuarioMock();
+        Usuario usuarioSalvo = DataBuilder.getUsuarioAtivoMock();
 
         String json = new ObjectMapper().findAndRegisterModules().writeValueAsString(usuarioCreateRequest);
         when(mapper.toEntity(any(UsuarioCreateRequest.class))).thenReturn(usuarioSalvo);
@@ -169,11 +169,11 @@ public class UsuarioControllerTest {
     @DisplayName("Teste de atualização de usuário com sucesso")
     public void updateUserWithSuccess() throws Exception {
 
-        Usuario usuario = DataBuilder.getUsuarioMock();
+        Usuario usuario = DataBuilder.getUsuarioAtivoMock();
         UsuarioAtualizarRequest usuarioUpdateRequest = DataBuilder.getUsuarioAtualizarRequestMock();
         String json = new ObjectMapper().findAndRegisterModules().writeValueAsString(usuarioUpdateRequest);
         when(mapper.toEntity(any(UsuarioAtualizarRequest.class))).thenReturn(usuario);
-        given(service.atualizar(anyInt(), any(Usuario.class))).willReturn(usuario);
+        given(service.atualizar(anyInt(), any(UsuarioAtualizarRequest.class))).willReturn(usuario);
 
         MockHttpServletRequestBuilder request = MockMvcRequestBuilders.put(USER_API + "/usuarios/{id}", 1)
                 .contentType(MediaType.APPLICATION_JSON)
@@ -191,7 +191,7 @@ public class UsuarioControllerTest {
         UsuarioAtualizarRequest usuarioUpdateRequest = DataBuilder.getUsuarioAtualizarRequestMock();
         String json = new ObjectMapper().findAndRegisterModules().writeValueAsString(usuarioUpdateRequest);
         when(mapper.toEntity(any(UsuarioAtualizarRequest.class))).thenReturn(new Usuario());
-        given(service.atualizar(anyInt(), any(Usuario.class))).willThrow(new NoSuchElementException("Usuário não encontrado"));
+        given(service.atualizar(anyInt(), any(UsuarioAtualizarRequest.class))).willThrow(new NoSuchElementException("Usuário não encontrado"));
 
         MockHttpServletRequestBuilder request = MockMvcRequestBuilders.put(USER_API + "/usuarios/{id}", 1)
                 .contentType(MediaType.APPLICATION_JSON)
@@ -208,7 +208,7 @@ public class UsuarioControllerTest {
     @DisplayName("Teste busca de usuário por id com sucesso")
     public void findUserByIdWithSuccess() throws Exception {
 
-        Usuario usuario = DataBuilder.getUsuarioMock();
+        Usuario usuario = DataBuilder.getUsuarioAtivoMock();
         given(service.buscarPorId(anyInt())).willReturn(usuario);
         given(mapper.toResponse(any(Usuario.class))).willReturn(DataBuilder.getUsuarioResponseMock());
 
@@ -289,7 +289,7 @@ public class UsuarioControllerTest {
     @DisplayName("Teste de buscar todos os usuários com sucesso")
     public void findAllUsersWithSuccess() throws Exception {
 
-        List<Usuario> usuarios = List.of(DataBuilder.getUsuarioMock());
+        List<Usuario> usuarios = List.of(DataBuilder.getUsuarioAtivoMock());
         List<UsuarioRespose> usuariosResposta = List.of(DataBuilder.getUsuarioResponseMock());
         given(service.buscarTodos()).willReturn(usuarios);
         given(mapper.toListResponse(any())).willReturn(usuariosResposta);

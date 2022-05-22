@@ -12,7 +12,7 @@ import java.time.LocalDate;
 
 public class DataBuilder {
 
-    public static Usuario getUsuarioMock() {
+    public static Usuario getUsuarioAtivoMock() {
         return Usuario.builder().idUsuario(1)
                 .nome("zé")
                 .usuario("seuze")
@@ -27,6 +27,24 @@ public class DataBuilder {
                 .estadoExpeditor(EstadoEnum.getEstado("SP"))
                 .orgaoExpeditor("SSP")
                 .ativo(true)
+                .build();
+    }
+
+    public static Usuario getUsuarioInativoMock() {
+        return Usuario.builder().idUsuario(1)
+                .nome("zé")
+                .usuario("seuze")
+                .email("ze@email.com")
+                .senha("12345")
+                .cpf("12345678910")
+                .dataNascimento(LocalDate.parse("2000-01-01"))
+                .telefone("11912345678")
+                .tipoDocumento(TipoDocumentoEnum.RG)
+                .numDocumento("123456789")
+                .dataEmissao(LocalDate.parse("2000-01-01"))
+                .estadoExpeditor(EstadoEnum.getEstado("SP"))
+                .orgaoExpeditor("SSP")
+                .ativo(false)
                 .build();
     }
 
