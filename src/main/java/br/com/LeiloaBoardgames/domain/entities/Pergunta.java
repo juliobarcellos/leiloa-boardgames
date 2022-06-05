@@ -1,4 +1,4 @@
-package br.com.LeiloaBoardgames.domain;
+package br.com.LeiloaBoardgames.domain.entities;
 
 import java.time.LocalDateTime;
 
@@ -16,20 +16,22 @@ import lombok.*;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-public class Lance {
+public class Pergunta {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Integer idLance;
+    private Integer id;
 
     @ManyToOne
     @JoinColumn(name = "idUsuario")
     private Usuario usuario;
-    
+
     @ManyToOne
     @JoinColumn(name = "idLeilao")
     private Leilao leilao;
 
-    private Double valor;
+    private String pergunta;
 
-    private LocalDateTime datahora = LocalDateTime.now();
+    private String resposta;
+
+    private LocalDateTime dataPergunta = LocalDateTime.now();
 }

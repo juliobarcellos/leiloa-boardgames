@@ -1,12 +1,12 @@
 package br.com.LeiloaBoardgames.mapper;
 
-import br.com.LeiloaBoardgames.domain.EstadoEnum;
-import br.com.LeiloaBoardgames.domain.TipoDocumentoEnum;
-import br.com.LeiloaBoardgames.domain.Usuario;
-import br.com.LeiloaBoardgames.domain.request.UsuarioAtualizarRequest;
-import br.com.LeiloaBoardgames.domain.request.UsuarioCreateRequest;
-import br.com.LeiloaBoardgames.domain.response.UsuarioCreateResponse;
-import br.com.LeiloaBoardgames.domain.response.UsuarioRespose;
+import br.com.LeiloaBoardgames.domain.entities.EstadoEnum;
+import br.com.LeiloaBoardgames.domain.entities.TipoDocumentoEnum;
+import br.com.LeiloaBoardgames.domain.entities.Usuario;
+import br.com.LeiloaBoardgames.domain.request.usuario.UsuarioAtualizarRequest;
+import br.com.LeiloaBoardgames.domain.request.usuario.UsuarioCreateRequest;
+import br.com.LeiloaBoardgames.domain.response.usuario.UsuarioCreateResponse;
+import br.com.LeiloaBoardgames.domain.response.usuario.UsuarioRespose;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.Named;
