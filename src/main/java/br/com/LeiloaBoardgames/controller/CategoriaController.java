@@ -1,13 +1,12 @@
 package br.com.LeiloaBoardgames.controller;
 
-import br.com.LeiloaBoardgames.domain.entities.Jogo;
-import br.com.LeiloaBoardgames.domain.request.jogo.JogoAtualizarRequest;
-import br.com.LeiloaBoardgames.domain.request.jogo.JogoCreateRequest;
-import br.com.LeiloaBoardgames.domain.response.jogo.JogoRespose;
+import br.com.LeiloaBoardgames.domain.entities.Categoria;
+import br.com.LeiloaBoardgames.domain.request.categoria.CategoriaRequest;
+import br.com.LeiloaBoardgames.domain.response.categoria.CategoriaRespose;
 import br.com.LeiloaBoardgames.exceptions.ApiErrors;
 import br.com.LeiloaBoardgames.exceptions.BusinessException;
-import br.com.LeiloaBoardgames.mapper.JogoMapper;
-import br.com.LeiloaBoardgames.service.JogoService;
+import br.com.LeiloaBoardgames.mapper.CategoriaMapper;
+import br.com.LeiloaBoardgames.service.CategoriaService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.validation.BindingResult;
@@ -18,47 +17,36 @@ import javax.validation.Valid;
 import java.util.List;
 import java.util.NoSuchElementException;
 
-
 @RestController
-@RequestMapping("/jogos")
+@RequestMapping("/categoria")
 @RequiredArgsConstructor
-public class JogoController {
+public class CategoriaController {
 
-    private final JogoService service;
-    private final JogoMapper mapper;
-
+    private final CategoriaService service;
+    private final CategoriaMapper mapper;
+    
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public JogoRespose create(@Valid @RequestBody JogoCreateRequest request) {
-        Jogo entity = mapper.toEntity(request);
+    public CategoriaRespose create(@Valid @RequestBody CategoriaRequest request) {
+        Categoria entity = mapper.toEntity(request);
         entity = service.save(entity);
         return mapper.toResponse(entity);
     }
 
     @PutMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void update(@PathVariable("id") Integer id, @Valid @RequestBody JogoAtualizarRequest request) {
+    public void update(@PathVariable("id") Integer id, @Valid @RequestBody CategoriaRequest request) {
         service.atualizar(id, request);
     }
 
-
-    @GetMapping("/jogos/{id}")
+    @GetMapping("/categorias")
     @ResponseStatus(HttpStatus.OK)
-    public JogoRespose findById(@PathVariable("id") Integer id) {
-        Jogo entity = null;
-        entity = service.buscarPorId(id);
-        return mapper.toResponse(entity);
-    }
-
-    @GetMapping("/jogos")
-    @ResponseStatus(HttpStatus.OK)
-    public List<JogoRespose> findAll() {
-        List<Jogo> entity = service.buscarTodos();
+    public List<CategoriaRespose> findAll() {
+        List<Categoria> entity = service.buscarTodos();
         return mapper.toListResponse(entity);
     }
 
-
-    @DeleteMapping("/jogos/{id}")
+    @DeleteMapping("/categorias/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void delete(@PathVariable("id") Integer id) {
         service.deletar(id);
@@ -82,6 +70,5 @@ public class JogoController {
     public ApiErrors handleValidationExceptions(NoSuchElementException ex) {
         return new ApiErrors(ex);
     }
-
 
 }

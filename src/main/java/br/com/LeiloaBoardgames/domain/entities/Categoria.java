@@ -15,4 +15,7 @@ public class Categoria {
     private Integer idCategoria;
 
     private String nome;
+
+    @Builder.Default
+    private boolean ativo = true;
 }
