@@ -1,6 +1,6 @@
 package br.com.LeiloaBoardgames.repository;
 
-import br.com.LeiloaBoardgames.domain.Usuario;
+import br.com.LeiloaBoardgames.domain.entities.Usuario;
 import br.com.LeiloaBoardgames.utils.DataBuilder;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;

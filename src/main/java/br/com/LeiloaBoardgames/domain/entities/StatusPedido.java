@@ -1,4 +1,4 @@
-package br.com.LeiloaBoardgames.domain;
+package br.com.LeiloaBoardgames.domain.entities;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

@@ -1,4 +1,4 @@
-package br.com.LeiloaBoardgames.domain;
+package br.com.LeiloaBoardgames.domain.entities;
 
 import java.time.LocalDateTime;
 import java.util.HashSet;
@@ -11,7 +11,6 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
 import javax.persistence.OrderBy;
 
 import lombok.*;

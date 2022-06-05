@@ -1,4 +1,4 @@
-package br.com.LeiloaBoardgames.domain;
+package br.com.LeiloaBoardgames.domain.entities;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -12,25 +12,21 @@ import javax.persistence.*;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-public class Cartao {
+public class ContaBancaria {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long idCartao;
+    private Long idConta;
 
-    private String nomeTitular;
+    private String numBanco;
 
-    private String numCartao;
+    private String agencia;
 
-    private Integer mesExpiracao;
+    private String contaCorrente;
 
-    private Integer anoExpiracao;
+    private Character digito;
 
-    private Integer cvv;
-
-    private Boolean principal;
-
-    @ManyToOne
+    @OneToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "idUsuario")
     private Usuario usuario;
 }

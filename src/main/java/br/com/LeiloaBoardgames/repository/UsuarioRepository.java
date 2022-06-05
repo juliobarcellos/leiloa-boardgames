@@ -3,7 +3,7 @@ package br.com.LeiloaBoardgames.repository;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import br.com.LeiloaBoardgames.domain.Usuario;
+import br.com.LeiloaBoardgames.domain.entities.Usuario;
 
 import java.util.List;
 import java.util.Optional;

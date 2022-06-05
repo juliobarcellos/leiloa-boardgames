@@ -1,14 +1,18 @@
 package br.com.LeiloaBoardgames.utils;
 
-import br.com.LeiloaBoardgames.domain.EstadoEnum;
-import br.com.LeiloaBoardgames.domain.TipoDocumentoEnum;
-import br.com.LeiloaBoardgames.domain.Usuario;
-import br.com.LeiloaBoardgames.domain.request.UsuarioAtualizarRequest;
-import br.com.LeiloaBoardgames.domain.request.UsuarioCreateRequest;
-import br.com.LeiloaBoardgames.domain.response.UsuarioCreateResponse;
-import br.com.LeiloaBoardgames.domain.response.UsuarioRespose;
+import br.com.LeiloaBoardgames.domain.entities.*;
+import br.com.LeiloaBoardgames.domain.request.jogo.JogoAtualizarRequest;
+import br.com.LeiloaBoardgames.domain.request.jogo.JogoCreateRequest;
+import br.com.LeiloaBoardgames.domain.request.usuario.UsuarioAtualizarRequest;
+import br.com.LeiloaBoardgames.domain.request.usuario.UsuarioCreateRequest;
+import br.com.LeiloaBoardgames.domain.response.jogo.JogoCreateResponse;
+import br.com.LeiloaBoardgames.domain.response.jogo.JogoRespose;
+import br.com.LeiloaBoardgames.domain.response.usuario.UsuarioCreateResponse;
+import br.com.LeiloaBoardgames.domain.response.usuario.UsuarioRespose;
 
 import java.time.LocalDate;
+import java.util.List;
+import java.util.Set;
 
 public class DataBuilder {
 
@@ -100,4 +104,73 @@ public class DataBuilder {
                 .dataEmissao("2000-01-01")
                 .build();
     }
+
+    public static Jogo jogoMock() {
+        List<Categoria> categoria = new java.util.ArrayList<>();
+        categoria.add(categoriaMock());
+        return Jogo.builder()
+                .idJogo(1)
+                .nome("Jogo de teste")
+                .descricao("Jogo de teste")
+                .categoria(categoria)
+                .fichaTecnica("Jogo de teste")
+                .quantidadeJogadores("10")
+                .imagemCapa("Jogo de teste")
+                .complemento("Jogo de teste")
+                .build();
+    }
+
+    public static JogoCreateRequest jogoCreateRequestMock() {
+
+        List<Categoria> categoria = new java.util.ArrayList<>();
+        categoria.add(categoriaMock());
+        return JogoCreateRequest.builder()
+                .nome("Jogo de teste")
+                .descricao("Jogo de teste")
+                .categoria(categoria)
+                .fichaTecnica("Jogo de teste")
+                .quantidadeJogadores("10")
+                .imagemCapa("Jogo de teste")
+                .complemento("Jogo de teste")
+                .build();
+    }
+
+    public static JogoRespose jogoResponseMock() {
+
+        List<Categoria> categoria = new java.util.ArrayList<>();
+        categoria.add(categoriaMock());
+        return JogoRespose.builder()
+                .idJogo(1)
+                .nome("Jogo de teste")
+                .descricao("Jogo de teste")
+                .categoria(categoria)
+                .fichaTecnica("Jogo de teste")
+                .quantidadeJogadores("10")
+                .imagemCapa("Jogo de teste")
+                .complemento("Jogo de teste")
+                .build();
+    }
+
+    public static JogoAtualizarRequest jogoAtualizarRequestMock() {
+
+        List<Categoria> categoria = new java.util.ArrayList<>();
+        categoria.add(categoriaMock());
+        return JogoAtualizarRequest.builder()
+                .nome("Jogo de teste")
+                .descricao("Jogo de teste")
+                .categoria(categoria)
+                .fichaTecnica("Jogo de teste")
+                .quantidadeJogadores("10")
+                .imagemCapa("Jogo de teste")
+                .complemento("Jogo de teste")
+                .build();
+    }
+
+    public static Categoria categoriaMock() {
+        return Categoria.builder()
+                .idCategoria(1)
+                .nome("Categoria de teste")
+                .build();
+    }
+
 }

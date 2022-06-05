@@ -1,7 +1,7 @@
 package br.com.LeiloaBoardgames.service;
 
-import br.com.LeiloaBoardgames.domain.Usuario;
-import br.com.LeiloaBoardgames.domain.request.UsuarioAtualizarRequest;
+import br.com.LeiloaBoardgames.domain.entities.Usuario;
+import br.com.LeiloaBoardgames.domain.request.usuario.UsuarioAtualizarRequest;
 import br.com.LeiloaBoardgames.exceptions.BusinessException;
 import br.com.LeiloaBoardgames.repository.UsuarioRepository;
 import lombok.RequiredArgsConstructor;

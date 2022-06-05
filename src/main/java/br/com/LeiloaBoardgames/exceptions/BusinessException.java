@@ -1,6 +1,8 @@
 package br.com.LeiloaBoardgames.exceptions;
 
-public class BusinessException extends RuntimeException {
+import java.util.function.Supplier;
+
+public class BusinessException extends RuntimeException{
     public BusinessException(String s) {
         super(s);
     }

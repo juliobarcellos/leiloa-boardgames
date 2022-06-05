@@ -1,4 +1,4 @@
-package br.com.LeiloaBoardgames.domain;
+package br.com.LeiloaBoardgames.domain.entities;
 
 import javax.persistence.*;
 
@@ -16,7 +16,7 @@ public class Jogo {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer idJogo;
 
-    private String Nome;
+    private String nome;
 
     private String descricao;
 
