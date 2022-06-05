@@ -1,6 +1,5 @@
 package br.com.LeiloaBoardgames.service;
 
-import br.com.LeiloaBoardgames.domain.entities.Categoria;
 import br.com.LeiloaBoardgames.domain.entities.Jogo;
 import br.com.LeiloaBoardgames.domain.request.jogo.JogoAtualizarRequest;
 import br.com.LeiloaBoardgames.exceptions.BusinessException;
@@ -8,7 +7,6 @@ import br.com.LeiloaBoardgames.repository.JogoRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.NoSuchElementException;
 

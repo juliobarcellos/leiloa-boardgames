@@ -130,5 +130,4 @@ class JogoServiceTest {
         when(repository.findByCategoriaContainingIgnoreCase(any())).thenReturn(Optional.of(jogos));
         assertEquals(jogos, service.buscarPorCategoria("Categoria de teste"));
     }
-    //TODO: acho que terminou esse teste, testar o controler
 }
