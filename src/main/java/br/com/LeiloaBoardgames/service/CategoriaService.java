@@ -14,7 +14,7 @@ import java.util.List;
 @Service
 public class CategoriaService {
 
-    CategoriaRepository repository;
+    private final CategoriaRepository repository;
 
     public Categoria save(Categoria entity) {
 
