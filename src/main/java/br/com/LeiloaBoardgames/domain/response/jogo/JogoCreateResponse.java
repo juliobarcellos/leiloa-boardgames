@@ -12,6 +12,6 @@ import lombok.NoArgsConstructor;
 public class JogoCreateResponse {
 
     private Integer idjogo;
-    private String Nome;
+    private String nome;
 
 }

@@ -12,7 +12,6 @@ import br.com.LeiloaBoardgames.domain.response.usuario.UsuarioRespose;
 
 import java.time.LocalDate;
 import java.util.List;
-import java.util.Set;
 
 public class DataBuilder {
 
@@ -173,4 +172,10 @@ public class DataBuilder {
                 .build();
     }
 
+    public static JogoCreateResponse jogoCreateResponseMock() {
+        return JogoCreateResponse.builder()
+                .idjogo(1)
+                .nome("Jogo de teste")
+                .build();
+    }
 }

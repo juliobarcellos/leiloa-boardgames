@@ -7,6 +7,7 @@ import br.com.LeiloaBoardgames.domain.response.usuario.UsuarioCreateResponse;
 import br.com.LeiloaBoardgames.domain.response.usuario.UsuarioRespose;
 import br.com.LeiloaBoardgames.exceptions.BusinessException;
 import br.com.LeiloaBoardgames.mapper.UsuarioMapper;
+import br.com.LeiloaBoardgames.service.CategoriaService;
 import br.com.LeiloaBoardgames.service.UsuarioService;
 import br.com.LeiloaBoardgames.utils.DataBuilder;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -19,10 +20,13 @@ import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
 import org.springframework.test.context.ActiveProfiles;
+import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.test.web.servlet.MockMvcBuilder;
 import org.springframework.test.web.servlet.request.MockHttpServletRequestBuilder;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
+import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -40,6 +44,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @ActiveProfiles("test")
 @WebMvcTest
 @AutoConfigureWebMvc
+@ContextConfiguration(classes = UsuarioController.class)
 public class UsuarioControllerTest {
 
 
@@ -72,6 +77,7 @@ public class UsuarioControllerTest {
                 .accept(MediaType.APPLICATION_JSON)
                 .content(json);
 
+//        MockMvcBuilders.annotationConfigSetup(ControllerTestConfig.class).build()
         mockMvc.perform(request)
                 .andExpect(status().isCreated())
                 .andExpect(jsonPath("nome").value(response.getNome()))
