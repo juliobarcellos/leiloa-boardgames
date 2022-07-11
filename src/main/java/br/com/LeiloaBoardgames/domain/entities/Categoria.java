@@ -1,4 +1,4 @@
-package br.com.LeiloaBoardgames.domain;
+package br.com.LeiloaBoardgames.domain.entities;
 
 import javax.persistence.*;
 
@@ -11,8 +11,11 @@ import lombok.*;
 @Entity
 public class Categoria {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer idCategoria;
 
     private String nome;
+
+    @Builder.Default
+    private boolean ativo = true;
 }

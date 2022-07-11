@@ -5,7 +5,7 @@ import java.util.Optional;
 import org.springframework.data.crossstore.ChangeSetPersister.NotFoundException;
 import org.springframework.stereotype.Service;
 
-import br.com.LeiloaBoardgames.domain.Lance;
+import br.com.LeiloaBoardgames.domain.entities.Lance;
 import br.com.LeiloaBoardgames.repository.LanceRepository;
 
 @Service
