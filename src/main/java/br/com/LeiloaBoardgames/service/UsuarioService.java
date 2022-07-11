@@ -6,17 +6,19 @@ import org.springframework.data.crossstore.ChangeSetPersister.NotFoundException;
 
 import br.com.LeiloaBoardgames.domain.Usuario;
 import br.com.LeiloaBoardgames.repository.UsuarioRepository;
+import lombok.RequiredArgsConstructor;
 
+@RequiredArgsConstructor
 public class UsuarioService {
 
-    UsuarioRepository repository;
+    private final UsuarioRepository repository;
 
-    public UsuarioService(UsuarioRepository repository) {
-        this.repository = repository;
+    public Usuario save(Usuario usuario) {
+        return repository.save(usuario);
     }
 
-    public void salvar(Usuario usuario) {
-        repository.save(null);
+    public Optional<Usuario> buscarPorId(Integer id) {
+        return repository.findById(id);
     }
 
     public void atualizar(Integer id, Usuario usuario) {

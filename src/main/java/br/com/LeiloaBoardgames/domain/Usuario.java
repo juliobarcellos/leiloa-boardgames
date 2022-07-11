@@ -1,22 +1,24 @@
 package br.com.LeiloaBoardgames.domain;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.List;
 
-import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 
 import lombok.*;
 
-@Data
+@Getter
+@Setter
 @Builder
-@NoArgsConstructor
 @AllArgsConstructor
+@NoArgsConstructor
 @Entity
 public class Usuario {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer idUsuario;
+    private Integer id;
 
     private String nome;
 
@@ -31,18 +33,4 @@ public class Usuario {
     private LocalDate dataNascimento;
 
     private String telefone;
-
-    private TipoDocumentoEnum tipoDocumento;
-
-    private String numDocumento;
-
-    private String orgaoExpeditor;
-
-    private EstadoEnum estadoExpeditor;
-
-    private LocalDate dataEmissao;
-
-    @OneToMany
-    private List<Jogo> jogosFavoritos = new ArrayList<>();
-
 }
