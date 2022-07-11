@@ -1,5 +1,6 @@
 package br.com.LeiloaBoardgames.repository;
 
+import br.com.LeiloaBoardgames.domain.entities.Categoria;
 import br.com.LeiloaBoardgames.domain.request.jogo.JogoFiltro;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
@@ -19,5 +20,5 @@ public interface JogoRepository extends JpaRepository<Jogo, Integer> {
 
     Optional<List<Jogo>> findByCategoriaContainingIgnoreCase(String categoria);
 
-    Optional<List<Jogo>> findByCategoriaIsIn(List<String> categoria);
+    Optional<List<Jogo>> findByCategoriaIsIn(List<Categoria> categoria);
 }

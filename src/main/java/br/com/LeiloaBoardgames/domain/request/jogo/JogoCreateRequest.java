@@ -20,7 +20,7 @@ public class JogoCreateRequest {
     @NotBlank
     private String descricao;
     @NotNull
-    private List<Categoria> categoria;
+    private List<Integer> categoria;
     @NotBlank
     private String fichaTecnica;
     @NotBlank

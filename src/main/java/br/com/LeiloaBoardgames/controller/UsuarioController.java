@@ -58,6 +58,13 @@ public class UsuarioController {
         return mapper.toListResponse(entity);
     }
 
+    @GetMapping("/usuarios/inativos")
+    @ResponseStatus(HttpStatus.OK)
+    public List<UsuarioRespose> findAllInactive() {
+        List<Usuario> entity = service.buscarTodosDesativados();
+        return mapper.toListResponse(entity);
+    }
+
 
     @DeleteMapping("/usuarios/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)

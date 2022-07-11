@@ -4,11 +4,13 @@ import br.com.LeiloaBoardgames.domain.entities.Jogo;
 import br.com.LeiloaBoardgames.domain.request.jogo.JogoCreateRequest;
 import br.com.LeiloaBoardgames.domain.response.jogo.JogoRespose;
 import org.mapstruct.Mapper;
+import org.mapstruct.Mapping;
 
 import java.util.List;
 
 @Mapper(componentModel = "spring")
 public interface JogoMapper {
+    @Mapping(target = "categoria", ignore = true)
     Jogo toEntity(JogoCreateRequest request);
 
     JogoRespose toResponse(Jogo entity);

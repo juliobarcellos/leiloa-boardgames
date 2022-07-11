@@ -36,7 +36,7 @@ public class UsuarioRepositoryTest {
     @Test
     @DisplayName("Deve retornar verdadeiro quando existir um usuário com o email informado")
     public void deveRetornarVerdadeiroQuandoExistirUmUsuarioComEmailInformado() {
-        Usuario usuario = Usuario.builder().email("test@teste.com").build();
+        Usuario usuario = Usuario.builder().email("test@teste.com").ativo(true).build();
         entityManager.persist(usuario);
         entityManager.flush();
         
@@ -56,11 +56,11 @@ public class UsuarioRepositoryTest {
     @Test
     @DisplayName("Deve retornar verdadeiro quando existir um usuario com o cpf informado")
     public void deveRetornarVerdadeiroQuandoExistirUmUsuarioComCpfInformado() {
-        Usuario usuario = Usuario.builder().cpf("12345678901").build();
+        Usuario usuario = Usuario.builder().cpf("12345678901").ativo(true).build();
         entityManager.persist(usuario);
         entityManager.flush();
         
-        boolean result = usuarioRepository.existsByCpf(usuario.getCpf());
+        boolean result = usuarioRepository.existsByCpf("12345678901");
         
         assertThat(result).isTrue();
     }
@@ -76,7 +76,7 @@ public class UsuarioRepositoryTest {
     @Test
     @DisplayName("Deve retornar verdadeiro quando existir um usuário com o usuario informado")
     public void deveRetornarVerdadeiroQuandoExistirUmUsuarioComUsuarioInformado() {
-        Usuario usuario = Usuario.builder().usuario("teste").build();
+        Usuario usuario = Usuario.builder().usuario("teste").ativo(true).build();
         entityManager.persist(usuario);
         entityManager.flush();
         
