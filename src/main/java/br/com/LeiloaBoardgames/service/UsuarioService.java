@@ -98,4 +98,8 @@ public class UsuarioService {
         usuarioAtual.setDataNascimento(Objects.nonNull(usuarioAtualizar.getDataNascimento()) ? LocalDate.parse(usuarioAtualizar.getDataNascimento()) : usuarioAtual.getDataNascimento());
         usuarioAtual.setTelefone(Objects.nonNull(usuarioAtualizar.getTelefone()) ? usuarioAtualizar.getTelefone(): usuarioAtual.getTelefone());
     }
+
+    public List<Usuario> buscarTodosDesativados() {
+        return repository.findByAtivoIsFalse();
+    }
 }

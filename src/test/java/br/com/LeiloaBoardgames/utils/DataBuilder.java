@@ -11,6 +11,7 @@ import br.com.LeiloaBoardgames.domain.response.usuario.UsuarioCreateResponse;
 import br.com.LeiloaBoardgames.domain.response.usuario.UsuarioRespose;
 
 import java.time.LocalDate;
+import java.util.Arrays;
 import java.util.List;
 
 public class DataBuilder {
@@ -121,8 +122,7 @@ public class DataBuilder {
 
     public static JogoCreateRequest jogoCreateRequestMock() {
 
-        List<Categoria> categoria = new java.util.ArrayList<>();
-        categoria.add(categoriaMock());
+        List<Integer> categoria = Arrays.asList(1,2,3,4);
         return JogoCreateRequest.builder()
                 .nome("Jogo de teste")
                 .descricao("Jogo de teste")

@@ -18,4 +18,5 @@ public interface UsuarioRepository extends JpaRepository<Usuario, Integer> {
     Optional<Usuario> findByCpfIgnoreCase(String cpf);
     Optional<Usuario> findByUsuarioIgnoreCase(String usuario);
     List<Usuario> findAllByAtivo(boolean ativo);
+    List<Usuario> findByAtivoIsFalse();
 }

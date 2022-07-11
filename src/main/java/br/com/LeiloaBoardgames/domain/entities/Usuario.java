@@ -9,6 +9,8 @@ import javax.persistence.*;
 import com.fasterxml.jackson.annotation.JsonIdentityReference;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.*;
+import org.hibernate.annotations.SQLDelete;
+import org.hibernate.annotations.Where;
 
 @Data
 @Builder
@@ -20,6 +22,8 @@ import lombok.*;
         @UniqueConstraint(name = "UniqueEmailAtivo", columnNames = {"email", "ativo"}),
         @UniqueConstraint(name = "UniqueCpfAtivo", columnNames = {"cpf", "ativo"})
 })
+@SQLDelete(sql = "UPDATE Usuario SET ativo = false WHERE id_usuario=?")
+@Where(clause = "ativo=true")
 @JsonIdentityReference
 public class Usuario {
     @Id
@@ -64,7 +68,7 @@ public class Usuario {
     private LocalDate dataEmissao;
 
     @JsonProperty("ativo")
-    private Boolean ativo;
+    private Boolean ativo = Boolean.TRUE;
 
     @OneToMany
     private List<Jogo> jogosFavoritos = new ArrayList<>();

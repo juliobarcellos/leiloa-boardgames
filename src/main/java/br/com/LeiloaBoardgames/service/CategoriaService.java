@@ -43,4 +43,12 @@ public class CategoriaService {
         entity.setAtivo(false);
         repository.save(entity);
     }
+
+    public List<Categoria> buscarTodos(List<Integer> ids){
+        return repository.findByIdCategoriaIn(ids);
+    }
+
+    public List<Categoria> buscarTodosPorNome(String nome){
+        return repository.findAllByNome(nome);
+    }
 }

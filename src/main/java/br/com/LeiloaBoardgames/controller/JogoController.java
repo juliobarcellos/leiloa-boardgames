@@ -1,5 +1,6 @@
 package br.com.LeiloaBoardgames.controller;
 
+import br.com.LeiloaBoardgames.domain.entities.Categoria;
 import br.com.LeiloaBoardgames.domain.entities.Jogo;
 import br.com.LeiloaBoardgames.domain.request.jogo.JogoAtualizarRequest;
 import br.com.LeiloaBoardgames.domain.request.jogo.JogoCreateRequest;
@@ -7,6 +8,7 @@ import br.com.LeiloaBoardgames.domain.response.jogo.JogoRespose;
 import br.com.LeiloaBoardgames.exceptions.ApiErrors;
 import br.com.LeiloaBoardgames.exceptions.BusinessException;
 import br.com.LeiloaBoardgames.mapper.JogoMapper;
+import br.com.LeiloaBoardgames.service.CategoriaService;
 import br.com.LeiloaBoardgames.service.JogoService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -25,12 +27,15 @@ import java.util.NoSuchElementException;
 public class JogoController {
 
     private final JogoService service;
+    private final CategoriaService categoriaService;
     private final JogoMapper mapper;
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     public JogoRespose create(@Valid @RequestBody JogoCreateRequest request) {
+        List<Categoria> categorias = categoriaService.buscarTodos(request.getCategoria());
         Jogo entity = mapper.toEntity(request);
+        entity.setCategoria(categorias);
         entity = service.save(entity);
         return mapper.toResponse(entity);
     }
@@ -42,7 +47,7 @@ public class JogoController {
     }
 
 
-    @GetMapping("/jogos/{id}")
+    @GetMapping("/{id}")
     @ResponseStatus(HttpStatus.OK)
     public JogoRespose findById(@PathVariable("id") Integer id) {
         Jogo entity = null;
@@ -50,10 +55,18 @@ public class JogoController {
         return mapper.toResponse(entity);
     }
 
-    @GetMapping("/jogos")
+    @GetMapping
     @ResponseStatus(HttpStatus.OK)
     public List<JogoRespose> findAll() {
         List<Jogo> entity = service.buscarTodos();
+        return mapper.toListResponse(entity);
+    }
+
+
+    @GetMapping("/categoria/{categoria}")
+    @ResponseStatus(HttpStatus.OK)
+    public List<JogoRespose> findAllByCategoria(@PathVariable("categoria") String categoria) {
+        List<Jogo> entity = service.buscarPorCategoria(categoria);
         return mapper.toListResponse(entity);
     }
 
