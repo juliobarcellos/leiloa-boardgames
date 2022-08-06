@@ -13,7 +13,6 @@ import java.util.List;
 @RequiredArgsConstructor
 @Service
 public class CategoriaService {
-//TODO: deletar não funciona
     private final CategoriaRepository repository;
 
     public Categoria save(Categoria entity) {
@@ -50,5 +49,9 @@ public class CategoriaService {
 
     public List<Categoria> buscarTodosPorNome(String nome){
         return repository.findAllByNome(nome);
+    }
+
+    public List<Categoria> buscarAtivos() {
+        return repository.findAllByAtivoTrue();
     }
 }
