@@ -13,7 +13,7 @@ import java.util.List;
 @RequiredArgsConstructor
 @Service
 public class CategoriaService {
-
+//TODO: deletar não funciona
     private final CategoriaRepository repository;
 
     public Categoria save(Categoria entity) {

@@ -15,6 +15,7 @@ import java.util.NoSuchElementException;
 @RequiredArgsConstructor
 @Service
 public class JogoService {
+    //TODO: atualizar não funciona
     private final JogoRepository repository;
     private final CategoriaService categoriaService;
 

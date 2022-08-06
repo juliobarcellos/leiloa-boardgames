@@ -34,38 +34,38 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @AutoConfigureWebMvc
 @ContextConfiguration(classes = JogoController.class)
 class JogoControllerTest {
-
-    private final String USER_API = "/jogos";
-
-    @Autowired
-    private MockMvc mockMvc;
-
-    @MockBean
-    private JogoService service;
-    @MockBean
-    private JogoMapper mapper;
-
+//
+//    private final String USER_API = "/jogos";
+//
+//    @Autowired
+//    private MockMvc mockMvc;
+//
+//    @MockBean
+//    private JogoService service;
+//    @MockBean
+//    private JogoMapper mapper;
+//
 //    @Test
-    @DisplayName("Teste de cadastro de usuário")
-    public void create() throws Exception {
-
-        JogoCreateRequest jogoCreateRequest = DataBuilder.jogoCreateRequestMock();
-        JogoRespose response = DataBuilder.jogoResponseMock();
-        Jogo jogoSalvo = DataBuilder.jogoMock();
-
-        String json = new ObjectMapper().findAndRegisterModules().writeValueAsString(jogoCreateRequest);
-
-        when(service.save(any(Jogo.class))).thenReturn(jogoSalvo);
-        when(mapper.toEntity(any(JogoCreateRequest.class))).thenReturn(jogoSalvo);
-        when(mapper.toResponse(any(Jogo.class))).thenReturn(response);
-
-        MockHttpServletRequestBuilder request = MockMvcRequestBuilders.post(USER_API)
-                .contentType(MediaType.APPLICATION_JSON)
-                .accept(MediaType.APPLICATION_JSON)
-                .content(json);
-
-        mockMvc.perform(request)
-                .andExpect(status().isCreated())
-                .andExpect(jsonPath("nome").value(response.getNome()));
-    }
+//    @DisplayName("Teste de cadastro de usuário")
+//    public void create() throws Exception {
+//
+//        JogoCreateRequest jogoCreateRequest = DataBuilder.jogoCreateRequestMock();
+//        JogoRespose response = DataBuilder.jogoResponseMock();
+//        Jogo jogoSalvo = DataBuilder.jogoMock();
+//
+//        String json = new ObjectMapper().findAndRegisterModules().writeValueAsString(jogoCreateRequest);
+//
+//        when(service.save(any(Jogo.class))).thenReturn(jogoSalvo);
+//        when(mapper.toEntity(any(JogoCreateRequest.class))).thenReturn(jogoSalvo);
+//        when(mapper.toResponse(any(Jogo.class))).thenReturn(response);
+//
+//        MockHttpServletRequestBuilder request = MockMvcRequestBuilders.post(USER_API)
+//                .contentType(MediaType.APPLICATION_JSON)
+//                .accept(MediaType.APPLICATION_JSON)
+//                .content(json);
+//
+//        mockMvc.perform(request)
+//                .andExpect(status().isCreated())
+//                .andExpect(jsonPath("nome").value(response.getNome()));
+//    }
 }

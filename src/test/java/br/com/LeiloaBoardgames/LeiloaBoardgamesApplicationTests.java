@@ -7,7 +7,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 @SpringBootTest
 class LeiloaBoardgamesApplicationTests {
 
-	@Test
+	//@Test
 	void contextLoads() {
 	}
 

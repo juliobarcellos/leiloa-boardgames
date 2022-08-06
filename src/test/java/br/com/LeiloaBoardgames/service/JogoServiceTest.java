@@ -3,6 +3,7 @@ package br.com.LeiloaBoardgames.service;
 import br.com.LeiloaBoardgames.domain.entities.Categoria;
 import br.com.LeiloaBoardgames.domain.entities.Jogo;
 import br.com.LeiloaBoardgames.domain.request.jogo.JogoAtualizarRequest;
+import br.com.LeiloaBoardgames.repository.CategoriaRepository;
 import br.com.LeiloaBoardgames.repository.JogoRepository;
 import br.com.LeiloaBoardgames.utils.DataBuilder;
 import org.junit.jupiter.api.DisplayName;
@@ -31,6 +32,8 @@ class JogoServiceTest {
     private JogoService service;
     @Mock
     private JogoRepository repository;
+    @Mock
+    private CategoriaService categoriaService;
 
     @Test
     @DisplayName("Deve salvar um jogo")
@@ -127,7 +130,10 @@ class JogoServiceTest {
     @DisplayName("Deve retornar uma lista de jogos com filtro de categoria")
     void listarPorCategoriaTeste(){
         List<Jogo> jogos = List.of(DataBuilder.jogoMock());
+        List<Categoria> categorias = List.of(DataBuilder.categoriaMock());
         when(repository.findByCategoriaContainingIgnoreCase(any())).thenReturn(Optional.of(jogos));
+        when(repository.findByCategoriaIsIn(any())).thenReturn(Optional.of(jogos));
+        when(categoriaService.buscarTodosPorNome(anyString())).thenReturn(categorias);
         assertEquals(jogos, service.buscarPorCategoria("Categoria de teste"));
     }
 }
