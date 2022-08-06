@@ -12,4 +12,5 @@ import lombok.NoArgsConstructor;
 public class CategoriaRespose {
     private Integer idCategoria;
     private String nome;
+    private boolean ativo;
 }

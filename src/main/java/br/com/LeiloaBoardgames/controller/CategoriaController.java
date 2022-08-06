@@ -46,6 +46,13 @@ public class CategoriaController {
         return mapper.toListResponse(entity);
     }
 
+    @GetMapping("/categorias/ativos")
+    @ResponseStatus(HttpStatus.OK)
+    public List<CategoriaRespose> findAllActive() {
+        List<Categoria> entity = service.buscarAtivos();
+        return mapper.toListResponse(entity);
+    }
+
     @DeleteMapping("/categorias/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void delete(@PathVariable("id") Integer id) {
