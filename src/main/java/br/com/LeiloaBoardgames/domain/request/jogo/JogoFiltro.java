@@ -6,7 +6,7 @@ import java.util.List;
 
 public class JogoFiltro {
     private String nome;
-    private List<Categoria> categoria;
+    private Categoria categoria;
     private String quantidadeJogadoresMin;
     private String quantidadeJogadoresMax;
 }

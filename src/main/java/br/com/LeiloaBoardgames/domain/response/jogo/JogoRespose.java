@@ -17,7 +17,7 @@ public class JogoRespose {
     private Integer idJogo;
     private String nome;
     private String descricao;
-    private List<Categoria> categoria;
+    private Categoria categoria;
     private String fichaTecnica;
     private String quantidadeJogadores;
     private String imagemCapa;

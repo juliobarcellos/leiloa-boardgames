@@ -68,9 +68,9 @@ class JogoServiceTest {
     @DisplayName("Deve atualizar a categoria de um Jogo")
     void atualizarCategoriaTeste(){
         Jogo jogoMock = DataBuilder.jogoMock();
-        List<Categoria> categorias = Arrays.asList(DataBuilder.categoriaMock(),
-                Categoria.builder().idCategoria(2).nome("outra Categoria").build(),
-                Categoria.builder().idCategoria(2).nome("outra Categoria").build());
+        Categoria categorias = DataBuilder.categoriaMock();
+        Categoria.builder().idCategoria(2).nome("outra Categoria").build();
+        Categoria.builder().idCategoria(2).nome("outra Categoria").build();
         JogoAtualizarRequest jogoAtualizar = JogoAtualizarRequest.builder().categoria(categorias).build();
         Jogo jogoAtualizado = DataBuilder.jogoMock();
         jogoAtualizado.setCategoria(jogoAtualizar.getCategoria());
@@ -130,10 +130,9 @@ class JogoServiceTest {
     @DisplayName("Deve retornar uma lista de jogos com filtro de categoria")
     void listarPorCategoriaTeste(){
         List<Jogo> jogos = List.of(DataBuilder.jogoMock());
-        List<Categoria> categorias = List.of(DataBuilder.categoriaMock());
-        when(repository.findByCategoriaContainingIgnoreCase(any())).thenReturn(Optional.of(jogos));
-        when(repository.findByCategoriaIsIn(any())).thenReturn(Optional.of(jogos));
-        when(categoriaService.buscarTodosPorNome(anyString())).thenReturn(categorias);
+        Categoria categoria = DataBuilder.categoriaMock();
+        when(categoriaService.buscarPorNome(anyString())).thenReturn(categoria);
+        when(repository.findByCategoria(any())).thenReturn(Optional.of(jogos));
         assertEquals(jogos, service.buscarPorCategoria("Categoria de teste"));
     }
 }

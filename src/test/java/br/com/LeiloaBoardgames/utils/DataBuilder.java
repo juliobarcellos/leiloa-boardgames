@@ -106,13 +106,11 @@ public class DataBuilder {
     }
 
     public static Jogo jogoMock() {
-        List<Categoria> categoria = new java.util.ArrayList<>();
-        categoria.add(categoriaMock());
         return Jogo.builder()
                 .idJogo(1)
                 .nome("Jogo de teste")
                 .descricao("Jogo de teste")
-                .categoria(categoria)
+                .categoria(categoriaMock())
                 .fichaTecnica("Jogo de teste")
                 .quantidadeJogadores("10")
                 .imagemCapa("Jogo de teste")
@@ -122,11 +120,10 @@ public class DataBuilder {
 
     public static JogoCreateRequest jogoCreateRequestMock() {
 
-        List<Integer> categoria = Arrays.asList(1,2,3,4);
         return JogoCreateRequest.builder()
                 .nome("Jogo de teste")
                 .descricao("Jogo de teste")
-                .categoria(categoria)
+                .categoria(1)
                 .fichaTecnica("Jogo de teste")
                 .quantidadeJogadores("10")
                 .imagemCapa("Jogo de teste")
@@ -135,14 +132,11 @@ public class DataBuilder {
     }
 
     public static JogoRespose jogoResponseMock() {
-
-        List<Categoria> categoria = new java.util.ArrayList<>();
-        categoria.add(categoriaMock());
         return JogoRespose.builder()
                 .idJogo(1)
                 .nome("Jogo de teste")
                 .descricao("Jogo de teste")
-                .categoria(categoria)
+                .categoria(categoriaMock())
                 .fichaTecnica("Jogo de teste")
                 .quantidadeJogadores("10")
                 .imagemCapa("Jogo de teste")
@@ -151,13 +145,10 @@ public class DataBuilder {
     }
 
     public static JogoAtualizarRequest jogoAtualizarRequestMock() {
-
-        List<Categoria> categoria = new java.util.ArrayList<>();
-        categoria.add(categoriaMock());
         return JogoAtualizarRequest.builder()
                 .nome("Jogo de teste")
                 .descricao("Jogo de teste")
-                .categoria(categoria)
+                .categoria(categoriaMock())
                 .fichaTecnica("Jogo de teste")
                 .quantidadeJogadores("10")
                 .imagemCapa("Jogo de teste")

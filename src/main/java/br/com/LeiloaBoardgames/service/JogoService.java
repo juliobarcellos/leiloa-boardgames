@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.NoSuchElementException;
+import java.util.Objects;
 
 @RequiredArgsConstructor
 @Service
@@ -54,46 +55,34 @@ public class JogoService {
 
     private void validarCamposParaAtualizar(JogoAtualizarRequest jogoAtualizar, Jogo jogoAtual) {
 
-        if (jogoAtualizar.getNome() != null) {
+        if (jogoAtualizar.getNome() != null && !Objects.equals(jogoAtualizar.getNome(), jogoAtual.getNome())) {
             if (validarJogoExistente(jogoAtualizar.getNome())) {
                 throw new BusinessException("Jogo já cadastrado com esse nome");
             }
             jogoAtual.setNome(jogoAtualizar.getNome());
         }
-        if (jogoAtualizar.getDescricao() != null) {
+        if (jogoAtualizar.getDescricao() != null && !Objects.equals(jogoAtualizar.getDescricao(), jogoAtual.getDescricao())) {
             if (validarJogoExistente(jogoAtualizar.getDescricao())) {
-                throw new BusinessException("Jogo já cadastrado com esse nome");
+                throw new BusinessException("Jogo já cadastrado com essa descrição");
             }
             jogoAtual.setDescricao(jogoAtualizar.getDescricao());
         }
-        if (jogoAtualizar.getCategoria() != null) {
-
-            jogoAtual.getCategoria().addAll(jogoAtualizar.getCategoria());
+        if (jogoAtualizar.getCategoria() != null && !Objects.equals(jogoAtualizar.getCategoria(), jogoAtual.getCategoria().getNome())) {
+            Categoria categoria = categoriaService.buscarPorNome(jogoAtualizar.getCategoria());
+            jogoAtual.setCategoria(categoria);
         }
 
 
-        if (jogoAtualizar.getFichaTecnica() != null) {
-            if (validarJogoExistente(jogoAtualizar.getFichaTecnica())) {
-                throw new BusinessException("Jogo já cadastrado com esse nome");
-            }
+        if (jogoAtualizar.getFichaTecnica() != null && !Objects.equals(jogoAtualizar.getFichaTecnica(), jogoAtual.getFichaTecnica())) {
             jogoAtual.setFichaTecnica(jogoAtualizar.getFichaTecnica());
         }
-        if (jogoAtualizar.getQuantidadeJogadores() != null) {
-            if (validarJogoExistente(jogoAtualizar.getQuantidadeJogadores())) {
-                throw new BusinessException("Jogo já cadastrado com esse nome");
-            }
+        if (jogoAtualizar.getQuantidadeJogadores() != null && !Objects.equals(jogoAtualizar.getQuantidadeJogadores(), jogoAtual.getQuantidadeJogadores())) {
             jogoAtual.setQuantidadeJogadores(jogoAtualizar.getQuantidadeJogadores());
         }
-        if (jogoAtualizar.getImagemCapa() != null) {
-            if (validarJogoExistente(jogoAtualizar.getImagemCapa())) {
-                throw new BusinessException("Jogo já cadastrado com esse nome");
-            }
+        if (jogoAtualizar.getImagemCapa() != null && !Objects.equals(jogoAtualizar.getImagemCapa(), jogoAtual.getImagemCapa())) {
             jogoAtual.setImagemCapa(jogoAtualizar.getImagemCapa());
         }
-        if (jogoAtualizar.getComplemento() != null) {
-            if (validarJogoExistente(jogoAtualizar.getComplemento())) {
-                throw new BusinessException("Jogo já cadastrado com esse nome");
-            }
+        if (jogoAtualizar.getComplemento() != null && !Objects.equals(jogoAtualizar.getComplemento(), jogoAtual.getComplemento())) {
             jogoAtual.setComplemento(jogoAtualizar.getComplemento());
         }
 
@@ -103,9 +92,9 @@ public class JogoService {
         return repository.findByNomeContainingIgnoreCase(nome).orElseThrow(() -> new NoSuchElementException("Jogo não encontrado"));
     }
 
-    public List<Jogo> buscarPorCategoria(String categoria) {
-        List<Categoria> categorias = categoriaService.buscarTodosPorNome(categoria);
-        return repository.findByCategoriaIsIn(categorias).orElseThrow(() -> new NoSuchElementException("Jogo não encontrado"));
+    public List<Jogo> buscarPorCategoria(String categoriaNome) {
+        Categoria categoria = categoriaService.buscarPorNome(categoriaNome);
+        return repository.findByCategoria(categoria).orElseThrow(() -> new NoSuchElementException("Jogo não encontrado"));
     }
 
 //    public List<Jogo> buscarPorListaCategoria(List<String> categorias) {
