@@ -54,4 +54,12 @@ public class CategoriaService {
     public List<Categoria> buscarAtivos() {
         return repository.findAllByAtivoTrue();
     }
+
+    public Categoria buscarPorNome(String categoria) {
+    return repository.findByNome(categoria).orElseThrow(() -> new BusinessException("Categoria não encontrada"));
+    }
+
+    public Categoria buscarPorId(Integer id) {
+        return repository.findById(id).orElseThrow(() -> new BusinessException("Categoria não encontrada"));
+    }
 }

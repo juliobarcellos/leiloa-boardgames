@@ -18,7 +18,7 @@ public interface JogoRepository extends JpaRepository<Jogo, Integer> {
 
     Optional<List<Jogo>> findByNomeContainingIgnoreCase(String nome);
 
-    Optional<List<Jogo>> findByCategoriaContainingIgnoreCase(String categoria);
+    Optional<List<Jogo>> findByCategoria(Categoria categoria);
 
-    Optional<List<Jogo>> findByCategoriaIsIn(List<Categoria> categoria);
+    Optional<List<Jogo>> findByCategoria_AtivoTrue();
 }
