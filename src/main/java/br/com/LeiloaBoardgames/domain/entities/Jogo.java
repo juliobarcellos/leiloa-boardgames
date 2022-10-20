@@ -20,9 +20,11 @@ public class Jogo {
 
     private String descricao;
 
-    @ManyToOne
-    @JoinColumn(name="idCategoria")
-    private Categoria categoria;
+    @ManyToMany
+    @JoinTable(name="jogo_has_categorias", joinColumns=
+            {@JoinColumn(name="idJogo")}, inverseJoinColumns=
+            {@JoinColumn(name="idCategoria")})
+    private List<Categoria> categoria;
 
     private String fichaTecnica;
 

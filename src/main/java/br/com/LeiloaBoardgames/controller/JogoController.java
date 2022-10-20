@@ -33,7 +33,7 @@ public class JogoController {
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     public JogoRespose create(@Valid @RequestBody JogoCreateRequest request) {
-        Categoria categoria = categoriaService.buscarPorId(request.getCategoria());
+        List<Categoria> categoria = request.getCategoria().stream().map(categoria1 -> categoriaService.buscarPorId(categoria1.getIdCategoria())).toList() ;
         Jogo entity = mapper.toEntity(request);
         entity.setCategoria(categoria);
         entity = service.save(entity);

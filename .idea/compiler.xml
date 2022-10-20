@@ -8,12 +8,14 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="LeiloaBoardgames" />
+        <module name="leiloa-boardgames" />
       </profile>
     </annotationProcessing>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="LeiloaBoardgames" options="-parameters" />
+      <module name="leiloa-boardgames" options="-parameters" />
     </option>
   </component>
 </project>
