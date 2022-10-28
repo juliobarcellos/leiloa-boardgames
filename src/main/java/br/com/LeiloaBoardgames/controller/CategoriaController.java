@@ -2,7 +2,7 @@ package br.com.LeiloaBoardgames.controller;
 
 import br.com.LeiloaBoardgames.domain.entities.Categoria;
 import br.com.LeiloaBoardgames.domain.request.categoria.CategoriaRequest;
-import br.com.LeiloaBoardgames.domain.response.categoria.CategoriaRespose;
+import br.com.LeiloaBoardgames.domain.response.categoria.CategoriaResponse;
 import br.com.LeiloaBoardgames.exceptions.ApiErrors;
 import br.com.LeiloaBoardgames.exceptions.BusinessException;
 import br.com.LeiloaBoardgames.mapper.CategoriaMapper;
@@ -27,7 +27,7 @@ public class CategoriaController {
     
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public CategoriaRespose create(@Valid @RequestBody CategoriaRequest request) {
+    public CategoriaResponse create(@Valid @RequestBody CategoriaRequest request) {
         Categoria entity = mapper.toEntity(request);
         entity = service.save(entity);
         return mapper.toResponse(entity);
@@ -41,14 +41,14 @@ public class CategoriaController {
 
     @GetMapping("/categorias")
     @ResponseStatus(HttpStatus.OK)
-    public List<CategoriaRespose> findAll() {
+    public List<CategoriaResponse> findAll() {
         List<Categoria> entity = service.buscarTodos();
         return mapper.toListResponse(entity);
     }
 
     @GetMapping("/categorias/ativos")
     @ResponseStatus(HttpStatus.OK)
-    public List<CategoriaRespose> findAllActive() {
+    public List<CategoriaResponse> findAllActive() {
         List<Categoria> entity = service.buscarAtivos();
         return mapper.toListResponse(entity);
     }

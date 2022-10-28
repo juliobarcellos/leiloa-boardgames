@@ -9,7 +9,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Data
 @Builder
-public class UsuarioRespose {
+public class UsuarioResponse {
 
     private Integer idUsuario;
     private String nome;

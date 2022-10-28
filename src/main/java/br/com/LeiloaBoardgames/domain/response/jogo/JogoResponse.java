@@ -12,7 +12,7 @@ import java.util.List;
 @AllArgsConstructor
 @Data
 @Builder
-public class JogoRespose {
+public class JogoResponse {
 
     private Integer idJogo;
     private String nome;

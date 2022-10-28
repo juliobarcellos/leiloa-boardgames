@@ -6,7 +6,7 @@ import br.com.LeiloaBoardgames.domain.entities.Usuario;
 import br.com.LeiloaBoardgames.domain.request.usuario.UsuarioAtualizarRequest;
 import br.com.LeiloaBoardgames.domain.request.usuario.UsuarioCreateRequest;
 import br.com.LeiloaBoardgames.domain.response.usuario.UsuarioCreateResponse;
-import br.com.LeiloaBoardgames.domain.response.usuario.UsuarioRespose;
+import br.com.LeiloaBoardgames.domain.response.usuario.UsuarioResponse;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.Named;
@@ -31,9 +31,9 @@ public interface UsuarioMapper {
     @Mapping(target = "dataEmissao", source = "dataEmissao", qualifiedByName = "dateToString")
     @Mapping(target = "tipoDocumento", source = "tipoDocumento", qualifiedByName = "enumTipoDocumentoToString")
     @Mapping(target = "estadoExpeditor", source = "estadoExpeditor", qualifiedByName = "estadoEnumToString")
-    UsuarioRespose toResponse(Usuario entity);
+    UsuarioResponse toResponse(Usuario entity);
 
-    List<UsuarioRespose> toListResponse(List<Usuario> entity);
+    List<UsuarioResponse> toListResponse(List<Usuario> entity);
 
     @Named("dateToString")
     public static String dateToString(LocalDate data){

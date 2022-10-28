@@ -6,9 +6,9 @@ import br.com.LeiloaBoardgames.domain.request.jogo.JogoCreateRequest;
 import br.com.LeiloaBoardgames.domain.request.usuario.UsuarioAtualizarRequest;
 import br.com.LeiloaBoardgames.domain.request.usuario.UsuarioCreateRequest;
 import br.com.LeiloaBoardgames.domain.response.jogo.JogoCreateResponse;
-import br.com.LeiloaBoardgames.domain.response.jogo.JogoRespose;
+import br.com.LeiloaBoardgames.domain.response.jogo.JogoResponse;
 import br.com.LeiloaBoardgames.domain.response.usuario.UsuarioCreateResponse;
-import br.com.LeiloaBoardgames.domain.response.usuario.UsuarioRespose;
+import br.com.LeiloaBoardgames.domain.response.usuario.UsuarioResponse;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -87,8 +87,8 @@ public class DataBuilder {
                 .build();
     }
 
-    public static UsuarioRespose getUsuarioResponseMock() {
-        return UsuarioRespose.builder()
+    public static UsuarioResponse getUsuarioResponseMock() {
+        return UsuarioResponse.builder()
                 .idUsuario(1)
                 .nome("zé da silva")
                 .usuario("seuze")
@@ -131,8 +131,8 @@ public class DataBuilder {
                 .build();
     }
 
-    public static JogoRespose jogoResponseMock() {
-        return JogoRespose.builder()
+    public static JogoResponse jogoResponseMock() {
+        return JogoResponse.builder()
                 .idJogo(1)
                 .nome("Jogo de teste")
                 .descricao("Jogo de teste")

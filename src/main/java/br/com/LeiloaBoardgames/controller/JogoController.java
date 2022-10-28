@@ -4,7 +4,7 @@ import br.com.LeiloaBoardgames.domain.entities.Categoria;
 import br.com.LeiloaBoardgames.domain.entities.Jogo;
 import br.com.LeiloaBoardgames.domain.request.jogo.JogoAtualizarRequest;
 import br.com.LeiloaBoardgames.domain.request.jogo.JogoCreateRequest;
-import br.com.LeiloaBoardgames.domain.response.jogo.JogoRespose;
+import br.com.LeiloaBoardgames.domain.response.jogo.JogoResponse;
 import br.com.LeiloaBoardgames.exceptions.ApiErrors;
 import br.com.LeiloaBoardgames.exceptions.BusinessException;
 import br.com.LeiloaBoardgames.mapper.JogoMapper;
@@ -32,7 +32,7 @@ public class JogoController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public JogoRespose create(@Valid @RequestBody JogoCreateRequest request) {
+    public JogoResponse create(@Valid @RequestBody JogoCreateRequest request) {
         List<Categoria> categoria = request.getCategoria().stream().map(categoria1 -> categoriaService.buscarPorId(categoria1.getIdCategoria())).toList() ;
         Jogo entity = mapper.toEntity(request);
         entity.setCategoria(categoria);
@@ -49,7 +49,7 @@ public class JogoController {
 
     @GetMapping("/{id}")
     @ResponseStatus(HttpStatus.OK)
-    public JogoRespose findById(@PathVariable("id") Integer id) {
+    public JogoResponse findById(@PathVariable("id") Integer id) {
         Jogo entity = null;
         entity = service.buscarPorId(id);
         return mapper.toResponse(entity);
@@ -57,7 +57,7 @@ public class JogoController {
 
     @GetMapping
     @ResponseStatus(HttpStatus.OK)
-    public List<JogoRespose> findAll() {
+    public List<JogoResponse> findAll() {
         List<Jogo> entity = service.buscarTodos();
         return mapper.toListResponse(entity);
     }
@@ -65,7 +65,7 @@ public class JogoController {
 
     @GetMapping("/categoria/{categoria}")
     @ResponseStatus(HttpStatus.OK)
-    public List<JogoRespose> findAllByCategoria(@PathVariable("categoria") String categoria) {
+    public List<JogoResponse> findAllByCategoria(@PathVariable("categoria") String categoria) {
         List<Jogo> entity = service.buscarPorCategoria(categoria);
         return mapper.toListResponse(entity);
     }
