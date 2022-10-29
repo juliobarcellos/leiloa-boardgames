@@ -17,7 +17,7 @@ public class LeilaoService {
         this.repository = repository;
     }
 
-
+    public void salvar(Leilao leilao) {
         leilao.setDataInicio(LocalDateTime.now());
         repository.save(leilao);
     }
