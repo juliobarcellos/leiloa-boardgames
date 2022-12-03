@@ -67,8 +67,8 @@ public class JogoService {
             }
             jogoAtual.setDescricao(jogoAtualizar.getDescricao());
         }
-        if (jogoAtualizar.getCategoria() != null && !Objects.equals(jogoAtualizar.getCategoria(), jogoAtual.getCategoria().getNome())) {
-            Categoria categoria = categoriaService.buscarPorNome(jogoAtualizar.getCategoria());
+        if (jogoAtualizar.getCategoria() != null && !Objects.equals(jogoAtualizar.getCategoria(), jogoAtual.getCategoria())) {
+            List<Categoria> categoria = jogoAtualizar.getCategoria().stream().map(categoria1 -> categoriaService.buscarPorId(categoria1.getIdCategoria())).toList() ;
             jogoAtual.setCategoria(categoria);
         }
 

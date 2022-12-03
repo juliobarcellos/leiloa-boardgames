@@ -9,7 +9,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Data
 @Builder
-public class CategoriaRespose {
+public class CategoriaResponse {
     private Integer idCategoria;
     private String nome;
     private boolean ativo;

@@ -1,5 +1,6 @@
 package br.com.LeiloaBoardgames.service;
 
+import java.time.LocalDateTime;
 import java.util.Optional;
 
 import org.springframework.data.crossstore.ChangeSetPersister.NotFoundException;
@@ -17,7 +18,8 @@ public class LeilaoService {
     }
 
     public void salvar(Leilao leilao) {
-        repository.save(null);
+        leilao.setDataInicio(LocalDateTime.now());
+        repository.save(leilao);
     }
 
     public void atualizar(Integer id, Leilao leilao) {

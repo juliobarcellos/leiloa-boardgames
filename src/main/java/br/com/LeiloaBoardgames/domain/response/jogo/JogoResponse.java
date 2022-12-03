@@ -12,12 +12,12 @@ import java.util.List;
 @AllArgsConstructor
 @Data
 @Builder
-public class JogoRespose {
+public class JogoResponse {
 
     private Integer idJogo;
     private String nome;
     private String descricao;
-    private Categoria categoria;
+    private List<Categoria> categoria;
     private String fichaTecnica;
     private String quantidadeJogadores;
     private String imagemCapa;

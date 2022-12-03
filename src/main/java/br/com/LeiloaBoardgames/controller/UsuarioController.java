@@ -4,7 +4,7 @@ import br.com.LeiloaBoardgames.domain.entities.Usuario;
 import br.com.LeiloaBoardgames.domain.request.usuario.UsuarioAtualizarRequest;
 import br.com.LeiloaBoardgames.domain.request.usuario.UsuarioCreateRequest;
 import br.com.LeiloaBoardgames.domain.response.usuario.UsuarioCreateResponse;
-import br.com.LeiloaBoardgames.domain.response.usuario.UsuarioRespose;
+import br.com.LeiloaBoardgames.domain.response.usuario.UsuarioResponse;
 import br.com.LeiloaBoardgames.exceptions.ApiErrors;
 import br.com.LeiloaBoardgames.exceptions.BusinessException;
 import br.com.LeiloaBoardgames.mapper.UsuarioMapper;
@@ -45,7 +45,7 @@ public class UsuarioController {
 
     @GetMapping("/usuarios/{id}")
     @ResponseStatus(HttpStatus.OK)
-    public UsuarioRespose findById(@PathVariable("id") Integer id) {
+    public UsuarioResponse findById(@PathVariable("id") Integer id) {
         Usuario entity = null;
         entity = service.buscarPorId(id);
         return mapper.toResponse(entity);
@@ -53,14 +53,14 @@ public class UsuarioController {
 
     @GetMapping("/usuarios")
     @ResponseStatus(HttpStatus.OK)
-    public List<UsuarioRespose> findAll() {
+    public List<UsuarioResponse> findAll() {
         List<Usuario> entity = service.buscarTodos();
         return mapper.toListResponse(entity);
     }
 
     @GetMapping("/usuarios/inativos")
     @ResponseStatus(HttpStatus.OK)
-    public List<UsuarioRespose> findAllInactive() {
+    public List<UsuarioResponse> findAllInactive() {
         List<Usuario> entity = service.buscarTodosDesativados();
         return mapper.toListResponse(entity);
     }
